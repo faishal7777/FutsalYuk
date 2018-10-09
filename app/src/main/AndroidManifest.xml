@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,9 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name="com.futsalyuk.runup.login_activity" />
-        <activity android:name="com.futsalyuk.runup.bottomview"></activity>
+        <activity
+            android:name="com.futsalyuk.runup.embo"
+            android:label="@string/title_activity_embo"></activity>
     </application>
 
 </manifest>
