@@ -13,4 +13,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="nav_tim">Tim</string>
+    <string name="nav_play">Play</string>
+    <string name="nav_profil">Profil</string>
 </resources>

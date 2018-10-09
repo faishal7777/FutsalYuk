@@ -27,6 +27,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".login_activity" />
+        <activity android:name=".bottomview"></activity>
     </application>
 
 </manifest>
