@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "101744862232",
+    "firebase_url": "https://futsalyuk-ac753.firebaseio.com",
+    "project_id": "futsalyuk-ac753",
+    "storage_bucket": "futsalyuk-ac753.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101744862232:android:ad7254dec3a0506e",
+        "android_client_info": {
+          "package_name": "com.futsalyuk.runup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101744862232-k76jkso7cm3nef5nt8a64apfagrr27en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwNT3Lj1mAiLX8LxpKD2n1EjHNCJ-IyjQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
