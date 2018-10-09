@@ -1,4 +1,4 @@
-package com.example.faish.futsalyuk;
+package com.futsalyuk.runup.futsalyuk;
 
 import org.junit.Test;
 

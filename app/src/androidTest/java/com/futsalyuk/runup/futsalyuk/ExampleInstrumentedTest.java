@@ -1,4 +1,4 @@
-package com.example.faish.futsalyuk;
+package com.futsalyuk.runup.futsalyuk;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

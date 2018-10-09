@@ -1,4 +1,4 @@
-package com.example.faish.futsalyuk;
+package com.futsalyuk.runup;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.futsalyuk.runup.futsalyuk.R;
 
 public class SliderAdapter extends PagerAdapter {
 

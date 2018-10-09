@@ -1,4 +1,4 @@
-package com.example.faish.futsalyuk;
+package com.futsalyuk.runup;
 
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.futsalyuk.runup.futsalyuk.R;
 
 public class MainActivity extends AppCompatActivity {
 
