@@ -11,6 +11,9 @@
         android:layout_height="56dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        app:itemBackground="#006738"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/nav_items">
 
     </android.support.design.widget.BottomNavigationView>

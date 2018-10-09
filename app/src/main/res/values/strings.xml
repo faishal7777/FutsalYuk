@@ -16,4 +16,7 @@
     <string name="nav_tim">Tim</string>
     <string name="nav_play">Play</string>
     <string name="nav_profil">Profil</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
