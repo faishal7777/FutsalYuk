@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     mNextBtn.setOnClickListener(new View.OnClickListener(){
                         @Override
                         public void onClick(View view){
-                            startActivity(new Intent(MainActivity.this, embo.class));
+                            startActivity(new Intent(MainActivity.this, regActivity.class));
                         }
                     });
                     mBackBtn.setOnClickListener(new View.OnClickListener(){
