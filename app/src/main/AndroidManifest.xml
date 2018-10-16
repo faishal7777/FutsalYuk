@@ -33,7 +33,8 @@
             android:label="@string/title_activity_embo" />
         <activity android:name="com.futsalyuk.runup.regActivity" />
         <activity android:name="com.futsalyuk.runup.reg2Activity" />
-        <activity android:name="com.futsalyuk.runup.wantplayActivity"></activity>
+        <activity android:name="com.futsalyuk.runup.wantplayActivity" />
+        <activity android:name="com.futsalyuk.runup.wantplay_friendActivity"></activity>
     </application>
 
 </manifest>
