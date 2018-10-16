@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.futsalyuk.runup.wantplay_friendActivity"
+    tools:context="com.futsalyuk.runup.temu_temanActivity"
     android:background="@drawable/square_balik">
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -48,12 +48,14 @@
                             android:gravity="center">
 
                             <ImageView
+                                android:id="@+id/img_team_home"
                                 android:layout_width="54dp"
                                 android:layout_height="54dp"
                                 android:src="@drawable/imgteam" />
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/tim_home"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/open_sans"
@@ -69,23 +71,26 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
+                            android:layout_gravity="center"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:background="@drawable/circle_border_white"
+                            android:background="@drawable/circle_white"
                             android:gravity="center">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_add_black_24dp" />
+                                android:id="@+id/img_team_away"
+                                android:layout_width="54dp"
+                                android:layout_height="54dp"
+                                android:src="@drawable/tim_away" />
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/tim_away"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/open_sans"
-                            android:text="Undang"
+                            android:text="Soap King's"
                             android:textColor="@color/colorWhite"
                             android:textStyle="bold" />
                     </LinearLayout>
