@@ -6,4 +6,10 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorTransparentWhite">#CCCCCC</color>
     <color name="colorWhiteTransparent2">#80FFFFFF</color>
+    <color name="solidCircle">#AAffffff</color>
+    <color name="strokeCircle">#50ffffff</color>
+    <color name="gradEnd">#006738</color>
+    <color name="gradStart">#2DA544</color>
+    <color name="button">#084924</color>
+    <color name="colorBlack">#000000</color>
 </resources>

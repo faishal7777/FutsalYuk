@@ -13,6 +13,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="penyedia_lapangan">Penyedia Lapangan</string>
+    <string name="nama">Faishal Rusydan</string>
+    <string name="status">Hakuna Matata</string>
     <string name="posisi">Posisi</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -26,6 +29,10 @@
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="pertandingan">Pertandingan.</string>
     <string name="futsal_bro">Futsal Bro?</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="keluar_akun">Keluar Akun</string>
+    <string name="bantuan">Bantuan</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_bottom_view">bottomViewActivity</string>
@@ -37,6 +44,7 @@
     <string name="title_activity_embo">embo</string>
     <string name="random_match">Random Match</string>
     <string name="friendly_match">Friendly Match</string>
+    <string name="profile_pict">profile_pict</string>
 
     <string-array name="spinner_pos">
         <item>Keeper</item>

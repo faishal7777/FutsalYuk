@@ -1,17 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/box3">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
-        android:fontFamily="@font/open_sans"
-        android:text="Profil."
-        android:textColor="@android:color/white"
-        android:textSize="43sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:background="@drawable/square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/circle_border">
+
+            <ImageView
+                android:id="@+id/imgUser"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle"
+                android:contentDescription="@string/profile_pict"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/linee" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/namaUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative2"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/nama"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/statUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/namaUser"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/status"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/statUser"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:background="@color/gradEnd"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/penyedia_lapangan"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relative1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_settings_black_24dp"
+            android:fontFamily="@font/open_sans"
+            android:text="     Pengaturan"
+            android:textAllCaps="false"
+            android:textSize="14sp" />
+
+        <Button
+            android:drawableLeft="@drawable/ic_insert_drive_file_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:background="@android:color/transparent"
+            android:textAllCaps="false"
+            android:text="     Tentang"
+            android:textSize="14sp" />
+
+        <Button
+            android:drawableLeft="@drawable/ic_help_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:text="     Bantuan"
+            android:textSize="14sp" />
+
+        <Button
+            android:drawableLeft="@drawable/ic_directions_run_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:text="     Keluar Akun"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
