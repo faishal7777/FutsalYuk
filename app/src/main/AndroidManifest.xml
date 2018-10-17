@@ -34,7 +34,8 @@
         <activity android:name="com.futsalyuk.runup.regActivity" />
         <activity android:name="com.futsalyuk.runup.reg2Activity" />
         <activity android:name="com.futsalyuk.runup.wantplayActivity" />
-        <activity android:name="com.futsalyuk.runup.wantplay_friendActivity"></activity>
+        <activity android:name="com.futsalyuk.runup.wantplay_friendActivity" />
+        <activity android:name="com.futsalyuk.runup.temu_temanActivity"></activity>
     </application>
 
 </manifest>
