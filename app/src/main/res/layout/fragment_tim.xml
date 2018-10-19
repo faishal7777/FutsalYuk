@@ -52,6 +52,7 @@
                 android:paddingLeft="85dp">
 
                 <TextView
+                    android:id="@+id/squadName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
@@ -61,6 +62,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/squadBio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_light"
@@ -69,6 +71,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/squadId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/round"

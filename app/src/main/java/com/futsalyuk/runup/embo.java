@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.futsalyuk.runup.LOOPJ.Helper;
+import com.futsalyuk.runup.Models.CRUD_Squad;
+import com.futsalyuk.runup.Models.CRUD_User;
 import com.futsalyuk.runup.futsalyuk.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,8 +45,8 @@ public class embo extends AppCompatActivity
         if (user != null) {
             uid = user.getUid();
         }
-        RequestParams params = new RequestParams("uid", uid);
-        Helper.get("show_userInfo", params, new JsonHttpResponseHandler() {
+        RequestParams params1 = new RequestParams("uid", uid);
+        Helper.get("show_userInfo", params1, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -52,9 +55,16 @@ public class embo extends AppCompatActivity
                             JSONArray jsonarray = new JSONArray(response.getString("data"));
                             for (int i = 0; i < jsonarray.length(); i++) {
                                 JSONObject jsonobject = jsonarray.getJSONObject(i);
-                                nama = jsonobject.getString("nama");
+                                CRUD_User.setUid(jsonobject.getString("uid"));
+                                CRUD_User.setEmail(jsonobject.getString("email"));
+                                CRUD_User.setNama(jsonobject.getString("nama"));
+                                CRUD_User.setTgl_lahir(jsonobject.getString("tgl_lahir"));
+                                CRUD_User.setAddress(jsonobject.getString("address"));
+                                CRUD_User.setPhone(jsonobject.getString("phone"));
+                                CRUD_User.setPosition(jsonobject.getString("position"));
+                                CRUD_User.setSquad_id(jsonobject.getString("squad_id"));
+                                CRUD_User.setTempat_id(jsonobject.getString("tempat_id"));
                             }
-                            Toast.makeText(embo.this, "Hi "+nama, Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             Log.d("Err:", String.valueOf(e));
                             e.printStackTrace();
@@ -67,8 +77,9 @@ public class embo extends AppCompatActivity
                 }
             }
         });
+        Toast.makeText(embo.this, "Hi "+CRUD_Squad.getSquad_name(), Toast.LENGTH_SHORT).show();
 
-        loadFragment(new TimFragment());
+        loadFragment(new ProfilFragment());
     }
 
     private boolean loadFragment(Fragment fragment){
