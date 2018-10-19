@@ -12,4 +12,5 @@
     <color name="gradStart">#2DA544</color>
     <color name="button">#084924</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorGrey">#E8E8E8</color>
 </resources>
