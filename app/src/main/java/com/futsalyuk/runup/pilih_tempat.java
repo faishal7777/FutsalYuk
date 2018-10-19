@@ -17,6 +17,12 @@ public class pilih_tempat extends AppCompatActivity {
     Button selectDate;
     TextView date;
     DatePickerDialog datePickerDialog;
+
+    int year;
+    int month;
+    int dayOfMonth;
+    Calendar calendar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,17 +34,17 @@ public class pilih_tempat extends AppCompatActivity {
         selectDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*calendar = Calendar.getInstance();
-                year = Calendar.get(Calendar.YEAR);
-                month = Calendar.get(Calendar.MONTH);
-                dayofmonth = Calendar.get(Calendar.DAY_OF_MONTH);*/
+                calendar = Calendar.getInstance();
+                year = calendar.get(Calendar.YEAR);
+                month = calendar.get(Calendar.MONTH);
+                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
                 datePickerDialog = new DatePickerDialog(pilih_tempat.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                date.setText(day + "/" + month + "/" + year);
+                                date.setText(day + "-" + (month+1) + "-"    + year);
                             }
-                        }, 0, 0, 0);
+                        }, year, month, dayOfMonth);
                 datePickerDialog.show();
             }
         });
