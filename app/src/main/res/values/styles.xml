@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/gradEnd</item>
         <item name="colorPrimaryDark">@color/gradEnd_2</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/gradStart</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
