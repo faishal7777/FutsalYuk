@@ -8,6 +8,50 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:101744862232:android:0c9bbc3b33757245",
+        "android_client_info": {
+          "package_name": "com.example.faish.futsalyuk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101744862232-r0l2b7fvohm8uklpqbjso7cevn5q70in.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.faish.futsalyuk",
+            "certificate_hash": "e9fbbcb9d68e513dca9310c5b0e029933693d6d1"
+          }
+        },
+        {
+          "client_id": "101744862232-k76jkso7cm3nef5nt8a64apfagrr27en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwNT3Lj1mAiLX8LxpKD2n1EjHNCJ-IyjQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101744862232-k76jkso7cm3nef5nt8a64apfagrr27en.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:101744862232:android:ad7254dec3a0506e",
         "android_client_info": {
           "package_name": "com.futsalyuk.runup"

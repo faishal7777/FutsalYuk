@@ -33,4 +33,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:percent:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
+    // GSON with Retrofit
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,19 +1,32 @@
 package com.futsalyuk.runup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import com.futsalyuk.runup.LOOPJ.Helper;
 import com.futsalyuk.runup.futsalyuk.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import com.loopj.android.http.*;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class embo extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener{
+    String nama;
 
 
     @Override
@@ -23,6 +36,37 @@ public class embo extends AppCompatActivity
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = null;
+        if (user != null) {
+            uid = user.getUid();
+        }
+        RequestParams params = new RequestParams("uid", uid);
+        Helper.get("show_userInfo", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if(response.getString("status").equals("success")) {
+                        try {
+                            JSONArray jsonarray = new JSONArray(response.getString("data"));
+                            for (int i = 0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                nama = jsonobject.getString("nama");
+                            }
+                            Toast.makeText(embo.this, "Hi "+nama, Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            Log.d("Err:", String.valueOf(e));
+                            e.printStackTrace();
+                        }
+                    } else {
+                        startActivity(new Intent(embo.this, reg2Activity.class));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         loadFragment(new TimFragment());
     }

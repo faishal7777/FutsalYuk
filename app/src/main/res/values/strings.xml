@@ -13,6 +13,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="alamat">Alamat</string>
     <string name="penyedia_lapangan">Penyedia Lapangan</string>
     <string name="nama">Faishal Rusydan</string>
     <string name="status">Hakuna Matata</string>

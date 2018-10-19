@@ -80,8 +80,7 @@
                             <ImageView
                                 android:id="@+id/img_team_away"
                                 android:layout_width="54dp"
-                                android:layout_height="54dp"
-                                android:src="@drawable/tim_away" />
+                                android:layout_height="54dp" />
                         </RelativeLayout>
 
                         <TextView
