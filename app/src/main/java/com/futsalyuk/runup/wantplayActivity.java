@@ -1,6 +1,7 @@
 package com.futsalyuk.runup;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,7 @@ import java.util.TimerTask;
 import cz.msebera.android.httpclient.Header;
 
 public class wantplayActivity extends AppCompatActivity {
+    public int mId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +62,45 @@ public class wantplayActivity extends AppCompatActivity {
         });
     }
 
-    private int checkMatch(final int match_id){
-        final int[] matched = new int[1];
-        RequestParams params = new RequestParams();
-        params.put("match_id", match_id);
+    private Timer timer;
+    private Handler handler = new Handler();
 
-        Helper.post("check_match", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    if(response.getString("status").equals("matched")) {
-                        matched[0] = 1;
-                    } else {
-                        matched[0] = 0;
+    //To stop timer
+    private void stopTimer(){
+        if(timer != null){
+            timer.cancel();
+            timer.purge();
+        }
+    }
+
+    //To start timer
+    private void startTimer(){
+        timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        RequestParams params = new RequestParams();
+                        params.put("match_id", mId);
+
+                        Helper.post("check_match", params, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                try {
+                                    if (response.getString("status").equals("matched")) {
+                                        Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
+                                        stopTimer();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                });
             }
-        });
-        return matched[0];
+        };
+        timer.schedule(timerTask, 5000, 5000);
     }
 
     private void createMatch(){
@@ -96,18 +117,8 @@ public class wantplayActivity extends AppCompatActivity {
                     if(response.getString("status").equals("success")) {
                         final int match_id = response.getInt("match_id");
                         Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
-
-                        final Timer t = new Timer( );
-                        t.scheduleAtFixedRate(new TimerTask() {
-
-                            @Override
-                            public void run() {
-                                if(checkMatch(match_id)==1) {
-                                    Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
-                                    t.cancel();
-                                }
-                            }
-                        }, 1000,5000);
+                        mId = match_id;
+                        startTimer();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
