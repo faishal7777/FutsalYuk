@@ -95,11 +95,9 @@ public class wantplayActivity extends AppCompatActivity {
                         final int match_id = response.getInt("match_id");
                         Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
 
-                        boolean matched = false;
-                        while(!matched){
+                        while(checkMatch(match_id)==0){
                             if(checkMatch(match_id)==1) {
                                 Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
-                                matched = true;
                                 break;
                             }
                         }
@@ -123,7 +121,7 @@ public class wantplayActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     if(response.getString("status").equals("success")) {
-                        Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(wantplayActivity.this, "Anda bagian dari tim tandang!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
