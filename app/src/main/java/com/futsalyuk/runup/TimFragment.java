@@ -53,10 +53,10 @@ public class TimFragment extends Fragment {
 
     int Imgs[]={
             R.drawable.linee,
-            R.drawable.blank_img,
-            R.drawable.blank_img,
-            R.drawable.blank_img,
-            R.drawable.blank_img
+            R.drawable.linee,
+            R.drawable.linee,
+            R.drawable.linee,
+            R.drawable.linee
     };
 
     private Button mTimkawan;
