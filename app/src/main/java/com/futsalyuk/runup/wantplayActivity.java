@@ -17,8 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -97,20 +95,14 @@ public class wantplayActivity extends AppCompatActivity {
                         final int match_id = response.getInt("match_id");
                         Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
 
-                        final Timer timer = new Timer();
-
-                        final TimerTask task = new TimerTask() {
-                            @Override
-                            public void run() {
-                                if(checkMatch(match_id) == 1){
-                                    Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
-                                    timer.cancel();
-                                    timer.purge();
-                                }
+                        boolean matched = false;
+                        while(!matched){
+                            if(checkMatch(match_id)==1) {
+                                Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
+                                matched = true;
+                                break;
                             }
-                        };
-
-                        timer.schedule(task, 0, 1000);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
