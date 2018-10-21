@@ -100,7 +100,7 @@ public class wantplayActivity extends AppCompatActivity {
                 });
             }
         };
-        timer.schedule(timerTask, 5000, 5000);
+        timer.schedule(timerTask, 1000, 1000);
     }
 
     private void createMatch(){
