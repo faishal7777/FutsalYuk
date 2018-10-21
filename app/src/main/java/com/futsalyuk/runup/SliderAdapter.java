@@ -28,13 +28,13 @@ public class SliderAdapter extends PagerAdapter {
     };*/
 
     public String [] slide_headings = {
-            "EAT",
+            "FUTSAL KUY",
             "SLEEP",
             "CODE"
     };
 
     public String [] slide_descs = {
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            "Merupakan mobile app platform untuk memudahkan pengguna baik untuk mencari anggota tim, mencari lawan tanding, maupun booking lapangan futsal",
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
     };

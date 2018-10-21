@@ -37,8 +37,10 @@
         <activity android:name="com.futsalyuk.runup.wantplay_friendActivity" />
         <activity android:name="com.futsalyuk.runup.temu_temanActivity" />
         <activity android:name="com.futsalyuk.runup.pilih_tempat" />
-        <activity android:name="com.futsalyuk.runup.tambah_lapangan"
-            android:theme="@style/khususLapangan"></activity>
+        <activity
+            android:name="com.futsalyuk.runup.tambah_lapangan"
+            android:theme="@style/khususLapangan" />
+        <activity android:name="com.futsalyuk.runup.maps_lapangan"></activity>
     </application>
 
 </manifest>

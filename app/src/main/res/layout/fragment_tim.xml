@@ -127,6 +127,12 @@
             android:text="Anggota"
             android:layout_marginLeft="15dp"
             android:textSize="20sp" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv_tim"
+            android:orientation="vertical">
+        </ListView>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
