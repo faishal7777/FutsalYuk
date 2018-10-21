@@ -40,7 +40,12 @@
         <activity
             android:name="com.futsalyuk.runup.tambah_lapangan"
             android:theme="@style/khususLapangan" />
-        <activity android:name="com.futsalyuk.runup.maps_lapangan"></activity>
+        <activity android:name="com.futsalyuk.runup.maps_lapangan" />
+        <activity
+            android:name="com.futsalyuk.runup.timkawan"
+            android:label="Tim Kawan"
+            android:theme="@style/khususLapangan" />
+        <activity android:name="com.futsalyuk.runup.list_lapangan"></activity>
     </application>
 
 </manifest>

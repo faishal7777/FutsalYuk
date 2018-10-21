@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/open_sans"
         android:text="Tim."
         android:textColor="@android:color/white"
@@ -86,7 +86,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
@@ -107,14 +107,15 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Tim Kawan"
-                android:gravity="center"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/colorBlack"
+            <Button
+                android:id="@+id/btntimkawan"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/open_sans"
+                android:text="Tim Kawan"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -128,6 +129,7 @@
             android:layout_marginLeft="15dp"
             android:textSize="20sp" />
         <ListView
+            android:divider="@null"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lv_tim"

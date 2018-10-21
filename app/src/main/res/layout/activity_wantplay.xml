@@ -48,7 +48,7 @@ tools:context="com.futsalyuk.runup.wantplayActivity">
                         android:background="@drawable/circle_white"
                         android:gravity="center">
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="54dp"
                             android:layout_height="54dp"
                             android:src="@drawable/imgteam" />
@@ -94,6 +94,7 @@ tools:context="com.futsalyuk.runup.wantplayActivity">
         </LinearLayout>
     </LinearLayout>
     <Button
+        android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

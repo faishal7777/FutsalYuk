@@ -23,20 +23,22 @@ public class SliderAdapter extends PagerAdapter {
     }
 
     //Arrays
-    /*public int[] slide_images = {
-            R.drawable.iconsp1
-    };*/
+    public int[] slide_images = {
+            R.drawable.ball1,
+            R.drawable.ball2,
+            R.drawable.ball3
+    };
 
     public String [] slide_headings = {
             "FUTSAL KUY",
-            "SLEEP",
-            "CODE"
+            "VERSUS",
+            "TERJANGKAU"
     };
 
     public String [] slide_descs = {
-            "Merupakan mobile app platform untuk memudahkan pengguna baik untuk mencari anggota tim, mencari lawan tanding, maupun booking lapangan futsal",
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            "Temukan tim futsalmu dengan mudah",
+            "Kamu juga bisa mencari lawan bermain untuk kamu",
+            "Dapatkan lapangan terbaik dengan harga terjangkau"
     };
 
     @Override
@@ -55,11 +57,11 @@ public class SliderAdapter extends PagerAdapter {
         LayoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = LayoutInflater.inflate(R.layout.slide_layout, container, false);
 
-        //ImageView slideImageView = (ImageView) view.findViewById(R.id.slide_image);
+        ImageView slideImageView = (ImageView) view.findViewById(R.id.slide_image);
         TextView slideHeading = (TextView) view.findViewById(R.id.slide_heading);
         TextView slideDescription = (TextView) view.findViewById(R.id.slide_desc);
 
-        //slideImageView.setImageResource(slide_images[position]);
+        slideImageView.setImageResource(slide_images[position]);
         slideHeading.setText(slide_headings[position]);
         slideDescription.setText(slide_descs[position]);
 
