@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.futsalyuk.runup.LOOPJ.Helper;
 import com.futsalyuk.runup.Models.CRUD_Squad;
+import com.futsalyuk.runup.Models.CRUD_User;
 import com.futsalyuk.runup.futsalyuk.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -26,7 +27,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class temu_temanActivity extends AppCompatActivity {
     TextView timHome, timAway;
-    int match_id;
+    int match_id, home_id, away_id;
 
     public Button mNextnext;
 
@@ -54,8 +55,10 @@ public class temu_temanActivity extends AppCompatActivity {
                 try {
                     if(response.getString("status").equals("success")) {
                         try {
-                            timHome.setText(response.getString("squad_id_home"));
-                            timAway.setText(response.getString("squad_id_away"));
+                            home_id = response.getInt("squad_id_home");
+                            away_id = response.getInt("squad_id_away");
+                            setSquadHome();
+                            setSquadAway();
                         } catch (JSONException e) {
                             Log.d("Err:", String.valueOf(e));
                             e.printStackTrace();
@@ -89,5 +92,59 @@ public class temu_temanActivity extends AppCompatActivity {
                         startActivity(new Intent(temu_temanActivity.this, embo.class));
                     }
                 }).create().show();
+    }
+
+    public void setSquadHome(){
+        RequestParams params = new RequestParams();
+        params.put("type", "squad_info");
+        params.put("squad_id", home_id);
+        Helper.get("show_squad", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if(response.getString("status").equals("success")) {
+                        try {
+                            JSONArray jsonarray = new JSONArray(response.getString("data"));
+                            for (int i = 0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                timHome.setText(jsonobject.getString("nama"));
+                            }
+                        } catch (JSONException e) {
+                            Log.d("Err:", String.valueOf(e));
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void setSquadAway(){
+        RequestParams params = new RequestParams();
+        params.put("type", "squad_info");
+        params.put("squad_id", away_id);
+        Helper.get("show_squad", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if(response.getString("status").equals("success")) {
+                        try {
+                            JSONArray jsonarray = new JSONArray(response.getString("data"));
+                            for (int i = 0; i < jsonarray.length(); i++) {
+                                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                timAway.setText(jsonobject.getString("nama"));
+                            }
+                        } catch (JSONException e) {
+                            Log.d("Err:", String.valueOf(e));
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
