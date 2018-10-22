@@ -24,6 +24,8 @@ public class list_lapangan extends AppCompatActivity {
         if(b!=null)
         {
             type = (String) b.get("type");
+        } else {
+            type = "random";
         }
 
         mainGrid = findViewById(R.id.gridLayout);
