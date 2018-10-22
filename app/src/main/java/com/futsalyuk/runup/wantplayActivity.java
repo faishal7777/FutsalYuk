@@ -25,7 +25,6 @@ import java.util.TimerTask;
 import cz.msebera.android.httpclient.Header;
 
 public class wantplayActivity extends AppCompatActivity {
-    public int mId;
     private Button mNextPlay;
 
     @Override
@@ -33,134 +32,11 @@ public class wantplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wantplay);
 
-        mNextPlay = (Button)findViewById(R.id.next_play);
+        mNextPlay = findViewById(R.id.next_play);
         mNextPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(wantplayActivity.this, progresMatching.class));
-            }
-        });
-
-        // Get Match Available
-        RequestParams params = new RequestParams();
-        params.put("lapangan_id", 5);
-        params.put("jam", 1);
-        Helper.get("show_match_available", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    if(response.getString("status").equals("success")) {
-                        try {
-                            JSONArray jsonarray = new JSONArray(response.getString("match_avail"));
-
-                            Random r = new Random();
-                            int id1 = r.nextInt(jsonarray.length());
-                            int match_id = jsonarray.getJSONObject(id1).getInt("match_id");
-
-                            joinMatch(match_id);
-                        } catch (JSONException e) {
-                            Log.d("Err:", String.valueOf(e));
-                            e.printStackTrace();
-                        }
-                    } else {
-                        createMatch();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    private Timer timerExecutor = new Timer();
-    private TimerTask doAsynchronousTaskExecutor;
-
-    public void startBackgroundPerformExecutor() {
-        final Handler handler = new Handler();
-        doAsynchronousTaskExecutor = new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    public void run() {
-                        try {
-                            Log.i("Background Perform",
-                                    "-------> Text from Background Perform");
-
-                            RequestParams params = new RequestParams();
-                            params.put("match_id", mId);
-
-                            Helper.get("check_match", params, new JsonHttpResponseHandler() {
-                                @Override
-                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                    try {
-                                        if (response.getString("status").equals("matched")) {
-                                            Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
-                                            stopExecutorClicked();
-                                        } else {
-                                            Toast.makeText(wantplayActivity.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        };
-        timerExecutor.schedule(doAsynchronousTaskExecutor, 2000, 4000);
-    }
-
-    public void stopExecutorClicked() {
-        doAsynchronousTaskExecutor.cancel();
-        timerExecutor.cancel();
-    }
-
-    private void createMatch(){
-        RequestParams params = new RequestParams();
-        params.put("is_matchMaking", 1);
-        params.put("squad_id_home", CRUD_User.getSquad_id());
-        params.put("lapangan_id", 5);
-        params.put("jam", 1);
-
-        Helper.post("create_match", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    if(response.getString("status").equals("success")) {
-                        final int match_id = response.getInt("match_id");
-                        Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
-                        mId = match_id;
-
-                        startBackgroundPerformExecutor();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    private void joinMatch(int match_id){
-        RequestParams params = new RequestParams();
-        params.put("match_id", match_id);
-        params.put("squad_id_away", CRUD_User.getSquad_id());
-        params.put("lapangan_id", 5);
-        params.put("jam", 1);
-
-        Helper.post("join_match", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    if(response.getString("status").equals("success")) {
-                        Toast.makeText(wantplayActivity.this, "Anda bagian dari tim tandang!", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
             }
         });
     }
