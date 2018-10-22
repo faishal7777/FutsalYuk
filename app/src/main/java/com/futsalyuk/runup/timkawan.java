@@ -18,7 +18,6 @@ import com.futsalyuk.runup.futsalyuk.R;
 
 public class timkawan extends AppCompatActivity {
 
-    String type;
     String Namatim[]={
             "Soap King's",
             "Lionheart",
@@ -48,37 +47,19 @@ public class timkawan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timkawan);
 
-        ListView listView = (ListView)findViewById(R.id.lv_timkawan);
-        CustomAdapter customAdapter = new CustomAdapter();
-        listView.setAdapter(customAdapter);
+        ListView list1 = findViewById(R.id.lv_timkawan);
 
-        Intent i = getIntent();
-        Bundle b = i.getExtras();
+        list1.setOnItemClickListener(
+                new AdapterView.OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view,
+                                            int position, long id) {
 
-        if(b!=null)
-        {
-            type = (String) b.get("type");
-        }
-
-        /*listView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (type.equals("friendly")) {
-
-                } else {
-
-                }*/
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(type.equals("friendly")){
-                    startActivity(new Intent(timkawan.this, temu_temanActivity.class));
-                } else {
-
+                        startActivity(new Intent(timkawan.this, temu_temanActivity.class));
+                    }
                 }
-            }
-        });
+        );
     }
 
 
