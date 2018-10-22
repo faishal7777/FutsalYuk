@@ -26,7 +26,7 @@ public class PlayFragment extends Fragment {
         mbtnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), wantplayActivity.class));
+                startActivity(new Intent(v.getContext(), list_lapangan.class));
             }
         });
 

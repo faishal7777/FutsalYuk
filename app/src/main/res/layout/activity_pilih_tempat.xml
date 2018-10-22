@@ -46,7 +46,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="141dp"
-                    android:src="@drawable/lapangan" />
+                    android:src="@drawable/img_lapangan" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

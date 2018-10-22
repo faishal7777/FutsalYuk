@@ -94,6 +94,7 @@ tools:context="com.futsalyuk.runup.wantplayActivity">
         </LinearLayout>
     </LinearLayout>
     <Button
+        android:id="@+id/next_play"
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

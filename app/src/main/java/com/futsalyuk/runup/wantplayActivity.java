@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.futsalyuk.runup.LOOPJ.Helper;
@@ -24,11 +26,20 @@ import cz.msebera.android.httpclient.Header;
 
 public class wantplayActivity extends AppCompatActivity {
     public int mId;
+    private Button mNextPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wantplay);
+
+        mNextPlay = (Button)findViewById(R.id.next_play);
+        mNextPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(wantplayActivity.this, progresMatching.class));
+            }
+        });
 
         // Get Match Available
         RequestParams params = new RequestParams();

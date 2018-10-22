@@ -45,7 +45,9 @@
             android:name="com.futsalyuk.runup.timkawan"
             android:label="Tim Kawan"
             android:theme="@style/khususLapangan" />
-        <activity android:name="com.futsalyuk.runup.list_lapangan"></activity>
+        <activity android:name="com.futsalyuk.runup.list_lapangan" />
+        <activity android:name="com.futsalyuk.runup.about" />
+        <activity android:name="com.futsalyuk.runup.progresMatching"></activity>
     </application>
 
 </manifest>
