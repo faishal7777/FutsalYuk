@@ -1,6 +1,7 @@
 package com.futsalyuk.runup;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,8 @@ public class temu_temanActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        embo.super.onBackPressed();
+                        temu_temanActivity.super.onBackPressed();
+                        startActivity(new Intent(temu_temanActivity.this, embo.class));
                     }
                 }).create().show();
     }
