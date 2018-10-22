@@ -227,6 +227,7 @@ public class progresMatching extends AppCompatActivity {
 
             if (value == to){
                 startActivity(new Intent(progresMatching.this, temu_temanActivity.class));
+                finish();
             }
         }
     }
