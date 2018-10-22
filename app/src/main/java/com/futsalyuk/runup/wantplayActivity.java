@@ -65,7 +65,7 @@ public class wantplayActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
         params.put("match_id", mId);
 
-        Helper.post("check_match", params, new JsonHttpResponseHandler() {
+        Helper.get("check_match", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -101,8 +101,8 @@ public class wantplayActivity extends AppCompatActivity {
                         new Runnable() {
                             @Override
                             public void run() {
-                                checkMatch();
                                 if (!matched) {
+                                    checkMatch();
                                     Toast.makeText(wantplayActivity.this, "Searching!", Toast.LENGTH_SHORT).show();
                                     mHandler.postDelayed(this, 1000);
                                 } else {
