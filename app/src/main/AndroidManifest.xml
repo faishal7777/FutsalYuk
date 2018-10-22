@@ -47,7 +47,7 @@
             android:theme="@style/khususLapangan" />
         <activity android:name="com.futsalyuk.runup.list_lapangan" />
         <activity android:name="com.futsalyuk.runup.about"
-            android:label="T"
+            android:label="Tentang Kami"
             android:theme="@style/khususLapangan"
             />
         <activity android:name="com.futsalyuk.runup.progresMatching" />

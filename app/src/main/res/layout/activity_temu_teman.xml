@@ -97,6 +97,8 @@
             </LinearLayout>
         </LinearLayout>
         <Button
+            android:id="@+id/nextnext"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
