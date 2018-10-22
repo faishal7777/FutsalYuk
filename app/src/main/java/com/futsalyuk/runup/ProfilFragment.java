@@ -56,8 +56,8 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.settingsBtn:
-                FirebaseAuth.getInstance().signOut();
                 Intent I2 = new Intent(new Intent(v.getContext(), reg2Activity.class));
+                I2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(I2);
                 break;
 
