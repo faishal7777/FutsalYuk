@@ -16,9 +16,7 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.Random;
-
 import cz.msebera.android.httpclient.Header;
 
 public class wantplayActivity extends AppCompatActivity {
@@ -95,7 +93,25 @@ public class wantplayActivity extends AppCompatActivity {
                         final int match_id = response.getInt("match_id");
                         Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
                         mId = match_id;
+                        RequestParams params = new RequestParams();
+                        params.put("match_id", mId);
 
+                        Helper.get("check_match", params, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                try {
+                                    if (response.getString("status").equals("matched")) {
+                                        Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
+                                        matched = true;
+                                    } else {
+                                        Toast.makeText(wantplayActivity.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+/*
                         final Handler mHandler = new Handler();
 
                         new Runnable() {
@@ -109,7 +125,7 @@ public class wantplayActivity extends AppCompatActivity {
                                     Toast.makeText(wantplayActivity.this, "Tim tandang di temukan!", Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        };
+                        };*/
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
