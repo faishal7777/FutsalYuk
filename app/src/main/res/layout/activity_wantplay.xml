@@ -58,8 +58,10 @@ tools:context="com.futsalyuk.runup.wantplayActivity">
                         android:id="@+id/squad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/open_sans"
                         android:text="Viper FC"
+                        android:textAlignment="center"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold" />
                 </LinearLayout>
