@@ -17,6 +17,8 @@ import com.futsalyuk.runup.futsalyuk.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfilFragment extends Fragment implements View.OnClickListener {
+
+    private Button mTentangKami;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
@@ -29,12 +31,22 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         // -- inflate the layout for this fragment
         final View myInflatedView = inflater.inflate(R.layout.fragment_profil, container,false);
         Button btnLogout = myInflatedView.findViewById(R.id.logoutBtn);
         btnLogout.setOnClickListener(this);
         Button btnSettings = myInflatedView.findViewById(R.id.settingsBtn);
         btnSettings.setOnClickListener(this);
+
+        mTentangKami = myInflatedView.findViewById(R.id.tentangKami);
+        mTentangKami.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), about.class));
+            }
+        });
 
         // Set the Text to try this out
         TextView t_Name = myInflatedView.findViewById(R.id.namaUser);
