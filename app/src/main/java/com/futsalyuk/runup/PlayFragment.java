@@ -35,7 +35,9 @@ public class PlayFragment extends Fragment {
         mbtnFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), list_lapangan.class));
+                Intent i = new Intent(new Intent(v.getContext(), list_lapangan.class));
+                i.putExtra("type", "friendly");
+                startActivity(i);
             }
         });
 
