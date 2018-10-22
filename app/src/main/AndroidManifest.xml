@@ -51,9 +51,6 @@
             android:theme="@style/khususLapangan"
             />
         <activity android:name="com.futsalyuk.runup.progresMatching" />
-        <activity android:name="com.futsalyuk.runup.pilihTeman"
-            android:label="Tim Kawan"
-            android:theme="@style/khususLapangan"></activity>
     </application>
 
 </manifest>
