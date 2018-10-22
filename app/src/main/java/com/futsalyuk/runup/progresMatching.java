@@ -85,7 +85,6 @@ public class progresMatching extends AppCompatActivity {
         super.onDestroy();
         // End
         stopExecutorClicked();
-        finish();
     }
 
 
@@ -149,6 +148,8 @@ public class progresMatching extends AppCompatActivity {
         });
         doAsynchronousTaskExecutor.cancel();
         timerExecutor.cancel();
+        startActivity(new Intent(progresMatching.this, temu_temanActivity.class));
+        finish();
     }
 
     private void createMatch(){
