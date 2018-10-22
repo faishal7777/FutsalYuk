@@ -98,11 +98,12 @@ public class wantplayActivity extends AppCompatActivity {
 
                         final Handler mHandler = new Handler();
 
-                        Runnable runnable = new Runnable() {
+                        new Runnable() {
                             @Override
                             public void run() {
                                 checkMatch();
                                 if (!matched) {
+                                    Toast.makeText(wantplayActivity.this, "Searching!", Toast.LENGTH_SHORT).show();
                                     mHandler.postDelayed(this, 1000);
                                 } else {
                                     Toast.makeText(wantplayActivity.this, "Tim tandang di temukan!", Toast.LENGTH_SHORT).show();
