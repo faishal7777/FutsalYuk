@@ -44,8 +44,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
     //cicrle imageview
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
-    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
