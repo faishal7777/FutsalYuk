@@ -83,8 +83,20 @@ public class TimFragment extends Fragment {
                     if(response.getString("status").equals("success")) {
                         try {
                             JSONArray jsonarray = new JSONArray(response.getString("data"));
+                            TextView t_Id = myInflatedView.findViewById(R.id.squadId);
+                            TextView t_Name = myInflatedView.findViewById(R.id.squadName);
+                            TextView t_Bio = myInflatedView.findViewById(R.id.squadBio);
                             for (int i = 0; i < jsonarray.length(); i++) {
                                 JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                if(CRUD_Squad.getSquad_name() == null || CRUD_Squad.getSquad_bio() == null || CRUD_Squad.getSquad_id() == null){
+                                    t_Id.setText(jsonobject.getString("squad_id"));
+                                    t_Name.setText(jsonobject.getString("nama"));
+                                    t_Bio.setText(jsonobject.getString("bio"));
+                                } else {
+                                    t_Id.setText(CRUD_Squad.getSquad_id());
+                                    t_Name.setText(CRUD_Squad.getSquad_name());
+                                    t_Bio.setText(CRUD_Squad.getSquad_bio());
+                                }
                                 CRUD_Squad.setSquad_id(jsonobject.getString("squad_id"));
                                 CRUD_Squad.setSquad_name(jsonobject.getString("nama"));
                                 CRUD_Squad.setSquad_bio(jsonobject.getString("bio"));
@@ -100,7 +112,7 @@ public class TimFragment extends Fragment {
             }
         });
 
-        mTimkawan = (Button)myInflatedView.findViewById(R.id.btntimkawan);
+        mTimkawan = myInflatedView.findViewById(R.id.btntimkawan);
         mTimkawan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,17 +120,11 @@ public class TimFragment extends Fragment {
             }
         });
 
-        ListView listView = (ListView)myInflatedView.findViewById(R.id.lv_tim);
+        ListView listView = myInflatedView.findViewById(R.id.lv_tim);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);
 
         // Set the Text to try this out
-        TextView t_Id = myInflatedView.findViewById(R.id.squadId);
-        TextView t_Name = myInflatedView.findViewById(R.id.squadName);
-        TextView t_Bio = myInflatedView.findViewById(R.id.squadBio);
-        t_Id.setText(CRUD_Squad.getSquad_id());
-        t_Name.setText(CRUD_Squad.getSquad_name());
-        t_Bio.setText(CRUD_Squad.getSquad_bio());
 
         return myInflatedView;
 

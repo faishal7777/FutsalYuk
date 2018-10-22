@@ -79,7 +79,7 @@ public class embo extends AppCompatActivity
         });
         Toast.makeText(embo.this, "Hi "+CRUD_Squad.getSquad_name(), Toast.LENGTH_SHORT).show();
 
-        loadFragment(new ProfilFragment());
+        loadFragment(new PlayFragment());
     }
 
     private boolean loadFragment(Fragment fragment){
