@@ -55,6 +55,7 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/btnFriend"
                 android:layout_width="145dp"
                 android:layout_height="182dp"
                 android:layout_margin="10dp"

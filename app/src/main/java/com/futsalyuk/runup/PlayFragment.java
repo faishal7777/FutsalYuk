@@ -16,6 +16,7 @@ import com.futsalyuk.runup.futsalyuk.R;
 public class PlayFragment extends Fragment {
 
     private ImageButton mbtnRandom;
+    private ImageButton mbtnFriend;
 
     @Nullable
     @Override
@@ -24,6 +25,14 @@ public class PlayFragment extends Fragment {
 
         mbtnRandom = (ImageButton) view.findViewById(R.id.btnRandom);
         mbtnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), list_lapangan.class));
+            }
+        });
+
+        mbtnFriend = (ImageButton) view.findViewById(R.id.btnFriend);
+        mbtnFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), list_lapangan.class));
