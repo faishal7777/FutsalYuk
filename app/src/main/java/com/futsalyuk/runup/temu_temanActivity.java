@@ -5,13 +5,28 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.futsalyuk.runup.LOOPJ.Helper;
+import com.futsalyuk.runup.Models.CRUD_Squad;
 import com.futsalyuk.runup.futsalyuk.R;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Random;
+
+import cz.msebera.android.httpclient.Header;
 
 public class temu_temanActivity extends AppCompatActivity {
-
+    TextView timHome, timAway;
+    int match_id;
 
     public Button mNextnext;
 
@@ -19,6 +34,38 @@ public class temu_temanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temu_teman);
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+
+        if(b!=null)
+        {
+            match_id = (int) b.get("match_id");
+        }
+
+        timHome = findViewById(R.id.tim_home);
+        timAway = findViewById(R.id.tim_away);
+
+        RequestParams params = new RequestParams();
+        params.put("match_id", match_id);
+        Helper.get("show_match_details", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if(response.getString("status").equals("success")) {
+                        try {
+                            timHome.setText(response.getString("squad_id_home"));
+                            timAway.setText(response.getString("squad_id_away"));
+                        } catch (JSONException e) {
+                            Log.d("Err:", String.valueOf(e));
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         mNextnext = findViewById(R.id.nextnext);
         mNextnext.setOnClickListener(new View.OnClickListener() {

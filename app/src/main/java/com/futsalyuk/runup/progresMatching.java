@@ -111,6 +111,9 @@ public class progresMatching extends AppCompatActivity {
                                     try {
                                         if (response.getString("status").equals("matched")) {
                                             Toast.makeText(progresMatching.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(progresMatching.this, temu_temanActivity.class);
+                                            i.putExtra("match_id", mId);
+                                            startActivity(i);
                                             stopExecutorClicked();
                                         } else {
                                             Toast.makeText(progresMatching.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
@@ -148,7 +151,6 @@ public class progresMatching extends AppCompatActivity {
         });
         doAsynchronousTaskExecutor.cancel();
         timerExecutor.cancel();
-        startActivity(new Intent(progresMatching.this, temu_temanActivity.class));
         finish();
     }
 
@@ -177,7 +179,7 @@ public class progresMatching extends AppCompatActivity {
         });
     }
 
-    private void joinMatch(int match_id){
+    private void joinMatch(final int match_id){
         RequestParams params = new RequestParams();
         params.put("match_id", match_id);
         params.put("squad_id_away", CRUD_User.getSquad_id());
@@ -190,7 +192,9 @@ public class progresMatching extends AppCompatActivity {
                 try {
                     if(response.getString("status").equals("success")) {
                         Toast.makeText(progresMatching.this, "Anda bagian dari tim tandang!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(progresMatching.this, temu_temanActivity.class));
+                        Intent i = new Intent(progresMatching.this, temu_temanActivity.class);
+                        i.putExtra("match_id", match_id);
+                        startActivity(i);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -227,7 +231,7 @@ public class progresMatching extends AppCompatActivity {
             //textView.setText((int)value+" %");
 
             if (value == to){
-                startActivity(new Intent(progresMatching.this, temu_temanActivity.class));
+                startActivity(new Intent(progresMatching.this, wantplayActivity.class));
                 finish();
             }
         }

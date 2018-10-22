@@ -55,6 +55,7 @@ tools:context="com.futsalyuk.runup.wantplayActivity">
                     </RelativeLayout>
 
                     <TextView
+                        android:id="@+id/squad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans"
