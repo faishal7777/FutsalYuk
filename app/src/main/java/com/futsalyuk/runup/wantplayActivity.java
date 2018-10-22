@@ -17,6 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import cz.msebera.android.httpclient.Header;
 
 public class wantplayActivity extends AppCompatActivity {
@@ -58,24 +61,51 @@ public class wantplayActivity extends AppCompatActivity {
         });
     }
 
-    private boolean matched = false;
-    private void checkMatch(){
-        RequestParams params = new RequestParams();
-        params.put("match_id", mId);
+    private Timer timerExecutor = new Timer();
+    private TimerTask doAsynchronousTaskExecutor;
 
-        Helper.get("check_match", params, new JsonHttpResponseHandler() {
+    public void startBackgroundPerformExecutor() {
+        final Handler handler = new Handler();
+        doAsynchronousTaskExecutor = new TimerTask() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    if (response.getString("status").equals("matched")) {
-                        Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
-                        matched = true;
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            Log.i("Background Perform",
+                                    "-------> Text from Background Perform");
+
+                            RequestParams params = new RequestParams();
+                            params.put("match_id", mId);
+
+                            Helper.get("check_match", params, new JsonHttpResponseHandler() {
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                    try {
+                                        if (response.getString("status").equals("matched")) {
+                                            Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
+                                            stopExecutorClicked();
+                                        } else {
+                                            Toast.makeText(wantplayActivity.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                });
             }
-        });
+        };
+        timerExecutor.schedule(doAsynchronousTaskExecutor, 2000, 4000);
+    }
+
+    public void stopExecutorClicked() {
+        doAsynchronousTaskExecutor.cancel();
+        timerExecutor.cancel();
     }
 
     private void createMatch(){
@@ -93,39 +123,8 @@ public class wantplayActivity extends AppCompatActivity {
                         final int match_id = response.getInt("match_id");
                         Toast.makeText(wantplayActivity.this, "Anda bagian dari tim kandang!", Toast.LENGTH_SHORT).show();
                         mId = match_id;
-                        RequestParams params = new RequestParams();
-                        params.put("match_id", mId);
 
-                        Helper.get("check_match", params, new JsonHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                try {
-                                    if (response.getString("status").equals("matched")) {
-                                        Toast.makeText(wantplayActivity.this, "Menemukan tim tandang!", Toast.LENGTH_SHORT).show();
-                                        matched = true;
-                                    } else {
-                                        Toast.makeText(wantplayActivity.this, ""+response.getString("message"), Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-/*
-                        final Handler mHandler = new Handler();
-
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                if (!matched) {
-                                    checkMatch();
-                                    Toast.makeText(wantplayActivity.this, "Searching!", Toast.LENGTH_SHORT).show();
-                                    mHandler.postDelayed(this, 1000);
-                                } else {
-                                    Toast.makeText(wantplayActivity.this, "Tim tandang di temukan!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        };*/
+                        startBackgroundPerformExecutor();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
