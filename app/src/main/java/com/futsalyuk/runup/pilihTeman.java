@@ -1,4 +1,4 @@
-package com.futsalyuk.runup;
+/*package com.futsalyuk.runup;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -25,4 +25,4 @@ public class pilihTeman extends AppCompatActivity {
             }
         });
     }
-}
+}*/
