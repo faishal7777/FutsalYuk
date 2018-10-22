@@ -33,6 +33,8 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
         final View myInflatedView = inflater.inflate(R.layout.fragment_profil, container,false);
         Button btnLogout = myInflatedView.findViewById(R.id.logoutBtn);
         btnLogout.setOnClickListener(this);
+        Button btnSettings = myInflatedView.findViewById(R.id.settingsBtn);
+        btnSettings.setOnClickListener(this);
 
         // Set the Text to try this out
         TextView t_Name = myInflatedView.findViewById(R.id.namaUser);
@@ -45,8 +47,23 @@ public class ProfilFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        FirebaseAuth.getInstance().signOut();
-        Intent I = new Intent(new Intent(v.getContext(), login_activity.class));
-        startActivity(I);
+        switch (v.getId()) {
+
+            case R.id.logoutBtn:
+                FirebaseAuth.getInstance().signOut();
+                Intent I1 = new Intent(new Intent(v.getContext(), login_activity.class));
+                startActivity(I1);
+                break;
+
+            case R.id.settingsBtn:
+                FirebaseAuth.getInstance().signOut();
+                Intent I2 = new Intent(new Intent(v.getContext(), reg2Activity.class));
+                startActivity(I2);
+                break;
+
+            default:
+                break;
+        }
+
     }
 }
